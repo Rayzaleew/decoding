@@ -28,20 +28,30 @@ string decrypt(string str, string key)
 	return encrypt(str, k);
 }
 
+
+
 void Vizh() {
 	string text, key;
-	int a = 0;
+	int a = 0, flag = 0;
 	string in_text, in_key, output;
 	ifstream in, fin;
 	ofstream out, fout;
-	out.open("Vizh.txt");
-	cout << "Введите текст:  ";
-	cin >> text;
+	out.open("files/Vizh.txt");
+	while (true) {
+		cout << "Введите текст:  ";
+		cin.ignore();
+		getline(cin, text);
+		if (checker(text)) break;
+	}
 	out << text << endl;
-	cout << "Введите ключ:  ";
-	cin >> key;
+	while (true) {
+		cout << "Введите ключ:  ";
+		cin >> key;
+		if (checker(key)) break;
+	}
+	
 	out << key << endl;
-	in.open("Vizh.txt");
+	in.open("files/Vizh.txt");
 	while (!in.eof()) {
 		if (a == 1) {
 			getline(in, in_key);
@@ -53,10 +63,10 @@ void Vizh() {
 	string cipher(encrypt(in_text, in_key));
 	in.close();
 	out.close();
-	fout.open("Vizh_encrypted.txt");
+	fout.open("files/Vizh_encrypted.txt");
 	fout << cipher << endl;
 	fout.close();
-	fin.open("Vizh_encrypted.txt");
+	fin.open("files/Vizh_encrypted.txt");
 	getline(fin, output);
 	cout << "Зашифрованный текст:  ";
 	cout << output << endl;

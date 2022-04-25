@@ -1,6 +1,6 @@
 #include "ciphers.h"
 
-// функция декодирования
+// функция кодирования/декодирования
 string code_atbash(string &text) {
 	
 
@@ -16,21 +16,28 @@ string code_atbash(string &text) {
 	}
 	return text;
 }
+
+
+
 void Atbash() {
+	int flag = 0;
 	string line;
 	string output;
 	ofstream out, fout;
 	ifstream in, fin;
-
-	out.open("Atbash.txt");
-	cout << "Введите текст:  ";
-	cin >> line;
+	out.open("files/Atbash.txt");
+	cin.ignore();
+	while (true) {
+		cout << "Введите текст:  ";
+		getline(cin, line);
+		if (checker(line)) break;
+	}
 	out << line << endl; 
 
-	in.open("Atbash.txt");
+	in.open("files/Atbash.txt");
 	getline(in, line);
 
-	fout.open("Atbash_encrypted.txt");
+	fout.open("files/Atbash_encrypted.txt");
 	string code = code_atbash(line);
 	fout << code;
 	string decode = code_atbash(line);
@@ -39,7 +46,7 @@ void Atbash() {
 	in.close();
 	fout.close();
 
-	fin.open("Atbash_encrypted.txt");
+	fin.open("files/Atbash_encrypted.txt");
 	getline(fin, output);
 
 	cout << "Зашифрованный текст:  ";

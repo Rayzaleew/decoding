@@ -1,61 +1,64 @@
 #include "ciphers.h"
-char* code_tar(char* src) {
-	char* dst = src;
+string code_tar(string &text) {
+	//char* dst = src;
 	const char* cch, * dch;
 
-	while (*src) {
-		if (isalpha(*src)) {
-			for (dch = DECODE_TAR, cch = CODE_TAR; *cch; *cch++, *dch++) {
-				if (*cch == toupper(*src)) {
-					*src = (isupper(*src)) ? *dch : tolower(*dch);
+	for (auto &c : text) {
+		if (isalpha(c)) {
+			for (dch = DECODE_TAR, cch = CODE_TAR; *cch; *(cch)++, *(dch)++) {
+				if (*cch == toupper(c)) {
+					c = (isupper(c)) ? *dch : tolower(*dch);
 					break;
 				}
 			}
 		}
-		*src++;
 	}
-	return dst;
+	return text;
 }
 
 // функция декодирования
-char* decode_tar(char* src) {
-	char* dst = src;
+string decode_tar(string text) {
+	//char* dst = src;
 	const char* cch, * dch;
 
-	while (*src) {
-		if (isalpha(*src)) {
-			for (dch = DECODE_TAR, cch = CODE_TAR; *cch; *cch++, *dch++) {
-				if (*dch == toupper(*src)) {
-					*src = (isupper(*src)) ? *cch : tolower(*cch);
+	for (auto &c : text) {
+		if (isalpha(c)) {
+			for (dch = DECODE_TAR, cch = CODE_TAR; *cch; *(cch)++, *(dch)++) {
+				if (*dch == toupper(c)) {
+					c = (isupper(c)) ? *cch : tolower(*cch);
 					break;
 				}
 			}
 		}
-		*src++;
 	}
-	return dst;
+	return text;
 }
+
 void tar() {
-	char line[64];
-	char str[64];
+	int flag = 0;
+	string line;
 	string output;
 	ofstream out, fout;
 	ifstream in, fin;
-	out.open("Tar.txt");
-	cout << "Введите текст:  ";
-	cin >> line;
+	out.open("files/Tar.txt");
+	while (true) {
+		cout << "Введите текст:  ";
+		cin.ignore();
+		getline(cin, line);
+		if (checker(line)) break;
+	}
 
 	out << line << endl; //запись исходной строки в файл
-	in.open("Tar.txt");
-	in.getline(str, 64);
-	fout.open("Tar_encrypted.txt");
-	string code = code_tar(str);//запись зашифрованной строки в файл
+	in.open("files/Tar.txt");
+	getline(in, line);
+	fout.open("files/Tar_encrypted.txt");
+	string code = code_tar(line);//запись зашифрованной строки в файл
 	fout << code;
-	string decode = decode_tar(str);
+	string decode = decode_tar(line);
 	out.close();
 	in.close();
 	fout.close();
-	fin.open("Tar_encrypted.txt");
+	fin.open("files/Tar_encrypted.txt");
 	getline(fin, output);
 	cout << "Зашифрованный текст:  ";
 	cout << output << endl;
