@@ -1,69 +1,52 @@
 #include "ciphers.h"
 
+// функция кодирования/декодирования
+string code_atbash(string &text) {
+	
 
-
-// функция кодирования
-char* code_atbash(char* src) {
-	char* dst = src;
-	const char* cch, * dch;
-
-	while (*src) {
-		if (isalpha(*src)) {
-			for (dch = DECODE_ATBASH, cch = CODE_ATBASH; *cch; *cch++, *dch++) {
-				if (*cch == toupper(*src)) {
-					*src = (isupper(*src)) ? *dch : tolower(*dch);
-					break;
-				}
-			}
+	for (auto& c : text) {
+		if (islower(c))
+		{
+			c = 26 - (c - 'a' + 1) + 'a';
 		}
-		*src++;
+		else if (isupper(c))
+		{
+			c = 26 - (c - 'A' + 1) + 'A';
+		}
 	}
-	return dst;
+	return text;
 }
 
-// функция декодирования
-char* decode_atbash(char* src) {
-	char* dst = src;
-	const char* cch, * dch;
 
-	while (*src) {
-		if (isalpha(*src)) {
-			for (dch = DECODE_ATBASH, cch = CODE_ATBASH; *cch; *cch++, *dch++) {
-				if (*dch == toupper(*src)) {
-					*src = (isupper(*src)) ? *cch : tolower(*cch);
-					break;
-				}
-			}
-		}
-		*src++;
-	}
-	return dst;
-}
+
 void Atbash() {
-	char line[64];
-	char str[64];
+	int flag = 0;
+	string line;
 	string output;
 	ofstream out, fout;
 	ifstream in, fin;
-
-	out.open("Atbash.txt");
-	cout << "Введите текст:  ";
-	cin >> line;
+	out.open("files/Atbash.txt");
+	cin.ignore();
+	while (true) {
+		cout << "Введите текст:  ";
+		getline(cin, line);
+		if (checker(line)) break;
+	}
 	out << line << endl; 
 
-	in.open("Atbash.txt");
-	in.getline(str, 64);
+	in.open("files/Atbash.txt");
+	getline(in, line);
 
-	fout.open("Atbash_encrypted.txt");
-	string code = code_atbash(str);
+	fout.open("files/Atbash_encrypted.txt");
+	string code = code_atbash(line);
 	fout << code;
-	string decode = decode_atbash(str);
+	string decode = code_atbash(line);
 
 	out.close();
 	in.close();
 	fout.close();
 
-	fin.open("Atbash_encrypted.txt");
+	fin.open("files/Atbash_encrypted.txt");
 	getline(fin, output);
 
 	cout << "Зашифрованный текст:  ";

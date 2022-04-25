@@ -2,6 +2,7 @@
 
 void Prog() {
 	int k = 1;
+	int files = _mkdir("files");
 	while (k != 0) {
 		cout << "Выберите шифр: " << endl;
 		cout << "Нажмите <1> для выбора шифра Атбаш " << endl;
@@ -9,7 +10,6 @@ void Prog() {
 		cout << "Нажмите <3> для выбора шифра “Тарабарская грамота” " << endl;
 		cout << "Нажмите <0> для выхода из программы " << endl;
 		cin >> k;
-
 		switch (k) {
 		case 1:
 			Atbash();
@@ -31,6 +31,16 @@ void Prog() {
 			break;
 		};
 	}
+}
+
+bool checker(string text) {
+	for (auto& c : text) {
+		if (c < 32 || c > 126) {
+			cout << "Вы ввели недопустимые символы. Пожалуйста, повторите ввод" << endl;
+			return 0;
+		}
+	}
+	return 1;
 }
 
 int main()
