@@ -1,47 +1,23 @@
 #include "ciphers.h"
 
-
-
-// функция кодирования
-char* code_atbash(char* src) {
-	char* dst = src;
-	const char* cch, * dch;
-
-	while (*src) {
-		if (isalpha(*src)) {
-			for (dch = DECODE_ATBASH, cch = CODE_ATBASH; *cch; *cch++, *dch++) {
-				if (*cch == toupper(*src)) {
-					*src = (isupper(*src)) ? *dch : tolower(*dch);
-					break;
-				}
-			}
-		}
-		*src++;
-	}
-	return dst;
-}
-
 // функция декодирования
-char* decode_atbash(char* src) {
-	char* dst = src;
-	const char* cch, * dch;
+string code_atbash(string &text) {
+	
 
-	while (*src) {
-		if (isalpha(*src)) {
-			for (dch = DECODE_ATBASH, cch = CODE_ATBASH; *cch; *cch++, *dch++) {
-				if (*dch == toupper(*src)) {
-					*src = (isupper(*src)) ? *cch : tolower(*cch);
-					break;
-				}
-			}
+	for (auto& c : text) {
+		if (islower(c))
+		{
+			c = 26 - (c - 'a' + 1) + 'a';
 		}
-		*src++;
+		else if (isupper(c))
+		{
+			c = 26 - (c - 'A' + 1) + 'A';
+		}
 	}
-	return dst;
+	return text;
 }
 void Atbash() {
-	char line[64];
-	char str[64];
+	string line;
 	string output;
 	ofstream out, fout;
 	ifstream in, fin;
@@ -52,12 +28,12 @@ void Atbash() {
 	out << line << endl; 
 
 	in.open("Atbash.txt");
-	in.getline(str, 64);
+	getline(in, line);
 
 	fout.open("Atbash_encrypted.txt");
-	string code = code_atbash(str);
+	string code = code_atbash(line);
 	fout << code;
-	string decode = decode_atbash(str);
+	string decode = code_atbash(line);
 
 	out.close();
 	in.close();
