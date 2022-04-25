@@ -1,0 +1,15 @@
+cout << "1. ¬вод текста с клавиатуры " << endl;
+	cout << "2. ¬вод текста с файла " << endl;
+	cin >> k;
+		switch (k) {
+		case 2:
+			cout << "¬ведите им€ файла: " << endl;
+			cin >> line;
+			in.open(line);
+			in.getline(str, 64);
+			break;
+		default:
+			cout << "¬ведите текст:  ";
+			cin >> str;
+			break;
+		}
