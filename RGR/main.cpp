@@ -46,6 +46,7 @@ bool checker(string text) {
 int main()
 {
 	setlocale(LC_ALL, "Russian");
+	cout << "CHANGEEEEEES!!!!!" << endl;
 	string s;
 	cout << "Пароль: ";
 	cin >> s;
