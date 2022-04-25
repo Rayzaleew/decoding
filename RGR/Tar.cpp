@@ -1,6 +1,8 @@
 #include "ciphers.h"
+
+
+
 string code_tar(string &text) {
-	//char* dst = src;
 	const char* cch, * dch;
 
 	for (auto &c : text) {
