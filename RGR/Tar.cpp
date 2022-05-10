@@ -1,7 +1,7 @@
 #include "ciphers.h"
 
 
-//функция кодирования/декодирования
+//С„СѓРЅРєС†РёСЏ РєРѕРґРёСЂРѕРІР°РЅРёСЏ/РґРµРєРѕРґРёСЂРѕРІР°РЅРёСЏ
 string code_tar(string text) {
 	const char* input_index, * output_index;
 	
@@ -26,15 +26,15 @@ void Tar(string line) {
 	string path;
 	ofstream out;
 
-	cout << "Исходный текст: " << line << endl;
+	cout << "РСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚: " << line << endl;
 	string code = code_tar(line);
-	cout << "Зашифрованный/расшифрованный текст: " << code << endl;
+	cout << "Р—Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№/СЂР°СЃС€РёС„СЂРѕРІР°РЅРЅС‹Р№ С‚РµРєСЃС‚: " << code << endl;
 
-	cout << "Хотите сохранить результат в файле? (1 - Да, 2 - Нет)" << endl;
+	cout << "РҐРѕС‚РёС‚Рµ СЃРѕС…СЂР°РЅРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ РІ С„Р°Р№Р»Рµ? (1 - Р”Р°, 2 - РќРµС‚)" << endl;
 	cin >> choice;
 	switch (choice) {
 	case 1:
-		cout << "Введите путь к файлу: " << endl;
+		cout << "Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ: " << endl;
 		cin >> path;
 		out.open(path);
 		out << code;
@@ -44,7 +44,7 @@ void Tar(string line) {
 		cout << endl;
 		break;
 	default:
-		cout << "Выберите один из двух вариантов! " << endl;
+		cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· РґРІСѓС… РІР°СЂРёР°РЅС‚РѕРІ! " << endl;
 
 	}
 }
