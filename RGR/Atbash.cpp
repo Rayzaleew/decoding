@@ -1,6 +1,6 @@
 #include "ciphers.h"
 
-// функция кодирования/декодирования
+// функция кодирования/декодиров
 string code_atbash(string text) {
 	
 
