@@ -1,7 +1,7 @@
 #include "ciphers.h"
 
 // функция кодирования/декодирования
-string code_atbash(string &text) {
+string code_atbash(string text) {
 	
 
 	for (auto& c : text) {
@@ -19,39 +19,31 @@ string code_atbash(string &text) {
 
 
 
-void Atbash() {
-	int flag = 0;
-	string line;
-	string output;
-	ofstream out, fout;
-	ifstream in, fin;
-	out.open("files/Atbash.txt");
-	cin.ignore();
-	while (true) {
-		cout << "Введите текст:  ";
-		getline(cin, line);
-		if (checker(line)) break;
-	}
-	out << line << endl; 
+void Atbash(string line) {
+	int choice = 0;
+	string path;
+	ofstream out;
 
-	in.open("files/Atbash.txt");
-	getline(in, line);
-
-	fout.open("files/Atbash_encrypted.txt");
+	cout << "Исходный текст: " << line << endl;
 	string code = code_atbash(line);
-	fout << code;
-	string decode = code_atbash(line);
+	cout << "Зашифрованный/расшифрованный текст: " << code << endl;
 
-	out.close();
-	in.close();
-	fout.close();
+	cout << "Хотите сохранить результат в файле? (1 - Да, 2 - Нет)" << endl;
+	cin >> choice;
+	switch (choice) {
+	case 1:
+		cout << "Введите путь к файлу: " << endl;
+		cin >> path;
+		out.open(path);
+		out << code;
+		out.close();
+		break;
+	case 2:
+		cout << endl;
+		break;
+	default:
+		cout << "Выберите один из двух вариантов! " << endl;
 
-	fin.open("files/Atbash_encrypted.txt");
-	getline(fin, output);
-
-	cout << "Зашифрованный текст:  ";
-	cout << output << endl;
-	cout << "Расшифрованный текст:  ";
-	cout << decode << endl;
-
+	}
+	
 }
