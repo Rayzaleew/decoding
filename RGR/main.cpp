@@ -6,11 +6,11 @@ void Prog() {
 	int files = _mkdir("files");
 	while (cipher) {
 
-		cout << "Выберите шифр: " << endl;
-		cout << "Нажмите <1> для выбора шифра Атбаш " << endl;
-		cout << "Нажмите <2> для выбора шифра Виженера " << endl;
-		cout << "Нажмите <3> для выбора шифра “Тарабарская грамота” " << endl;
-		cout << "Нажмите <0> для выхода из программы " << endl;
+		cout << "Р’С‹Р±РµСЂРёС‚Рµ С€РёС„СЂ: " << endl;
+		cout << "РќР°Р¶РјРёС‚Рµ <1> РґР»СЏ РІС‹Р±РѕСЂР° С€РёС„СЂР° РђС‚Р±Р°С€ " << endl;
+		cout << "РќР°Р¶РјРёС‚Рµ <2> РґР»СЏ РІС‹Р±РѕСЂР° С€РёС„СЂР° Р’РёР¶РµРЅРµСЂР° " << endl;
+		cout << "РќР°Р¶РјРёС‚Рµ <3> РґР»СЏ РІС‹Р±РѕСЂР° С€РёС„СЂР° вЂњРўР°СЂР°Р±Р°СЂСЃРєР°СЏ РіСЂР°РјРѕС‚Р°вЂќ " << endl;
+		cout << "РќР°Р¶РјРёС‚Рµ <0> РґР»СЏ РІС‹С…РѕРґР° РёР· РїСЂРѕРіСЂР°РјРјС‹ " << endl;
 		cin >> cipher;
 		switch (cipher) {
 		case 1:
@@ -29,10 +29,10 @@ void Prog() {
 			cout << "----------------------------------------" << endl;
 			break;
 		case 0:
-			cout << "Всего доброго!" << endl;
+			cout << "Р’СЃРµРіРѕ РґРѕР±СЂРѕРіРѕ!" << endl;
 			break;
 		default:
-			cout << "Выберите один из трёх предложенных шифров" << endl;
+			cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· С‚СЂС‘С… РїСЂРµРґР»РѕР¶РµРЅРЅС‹С… С€РёС„СЂРѕРІ" << endl;
 			break;
 		};
 	}
@@ -45,28 +45,28 @@ string line_get(int cipher, string &key) {
 	int a = 0;
 	string line, path;
 	ifstream in;
-	cout << "Вы хотите прочитать текст с файла или с клавиатуры? " << endl;
-	cout << "1. С клавиатуры " << endl;
-	cout << "2. С файла " << endl;
+	cout << "Р’С‹ С…РѕС‚РёС‚Рµ РїСЂРѕС‡РёС‚Р°С‚СЊ С‚РµРєСЃС‚ СЃ С„Р°Р№Р»Р° РёР»Рё СЃ РєР»Р°РІРёР°С‚СѓСЂС‹? " << endl;
+	cout << "1. РЎ РєР»Р°РІРёР°С‚СѓСЂС‹ " << endl;
+	cout << "2. РЎ С„Р°Р№Р»Р° " << endl;
 	cin >> method;
 	switch (method) {
 	case 1:
 		while (true) {
-			cout << "Введите текст:  ";
+			cout << "Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚:  ";
 			cin.ignore();
 			getline(cin, line);
 			if (checker(line)) break;
 		}
 		if (cipher == 2) {
 			while (true) {
-				cout << "Введите ключ:  ";
+				cout << "Р’РІРµРґРёС‚Рµ РєР»СЋС‡:  ";
 				cin >> key;
 				if (checker(key)) break;
 			}
 		}
 		break;
 	case 2:
-		cout << "Введите путь к файлу: " << endl;
+		cout << "Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ: " << endl;
 		cin >> path;
 		in.open(path);
 		if (cipher == 2) {
@@ -93,7 +93,7 @@ string line_get(int cipher, string &key) {
 		in.close();
 		break;
 	default:
-		cout << "Выберите один из двух вариантов!" << endl;
+		cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· РґРІСѓС… РІР°СЂРёР°РЅС‚РѕРІ!" << endl;
 		break;
 	}
 	return line;
@@ -102,7 +102,7 @@ string line_get(int cipher, string &key) {
 bool checker(string text) {
 	for (auto& c : text) {
 		if (c < 32 || c > 126) {
-			cout << "Вы ввели недопустимые символы. Пожалуйста, повторите ввод" << endl;
+			cout << "Р’С‹ РІРІРµР»Рё РЅРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ" << endl;
 			return 0;
 		}
 	}
@@ -113,13 +113,13 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	string s;
-	cout << "Пароль: ";
+	cout << "РџР°СЂРѕР»СЊ: ";
 	cin >> s;
 	if (s == "123456") {
 		Prog();
 	}
 	else {
-		cout << "Неверный пароль: " << endl;
+		cout << "РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ: " << endl;
 		return 0;
 	}
 	system("pause");
