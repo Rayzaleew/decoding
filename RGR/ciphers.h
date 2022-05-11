@@ -1,11 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <stdio.h>
-#include <string.h> 
 #include <fstream>
-#include <direct.h>
-#include <Windows.h>
 #define  CODE_TAR		"AZXWEVTSIRQPNMOLKJHGUFDCYB"
 #define  DECODE_TAR     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
