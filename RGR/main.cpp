@@ -4,7 +4,7 @@ void Prog() {
     char cipher = 1;
     string line, key;
     int files = _mkdir("files");
-    
+
     while (cipher) {
         cout << "Выберите шифр: " << endl
              << "Нажмите <1> для выбора шифра Атбаш " << endl
@@ -43,10 +43,10 @@ void Prog() {
 
 string line_get(int cipher, string& key) {
     int method = 0;
-    int a = 0; // Так называть переменные не стоит
+    int a = 0;  // Так называть переменные не стоит
     string line, path;
     ifstream in;
-    //ifstream in и path лучше объявить в кейсе
+    // ifstream in и path лучше объявить в кейсе
 
     cout << "Вы хотите прочитать текст с файла или с клавиатуры? " << endl
          << "1. С клавиатуры " << endl
@@ -73,7 +73,7 @@ string line_get(int cipher, string& key) {
             cout << "Введите путь к файлу: " << endl;
             cin >> path;
             in.open(path);
-            if (cipher == 2) { // и почему для этого шифра нужен отдельный метод считывания файла?
+            if (cipher == 2) {  // и почему для этого шифра нужен отдельный метод считывания файла?
                 while (true) {
                     while (!in.eof()) {
                         if (a == 1) {
@@ -107,12 +107,12 @@ string line_get(int cipher, string& key) {
 За вывод должен отвечать какойто 1 логический элемент
 checker должен возвращать только true или false
 
-+ Если придерживаешься структурного программирования 
++ Если придерживаешься структурного программирования
 в каждой функции желательно должен быть 1 вход и 1 выход
 
 + Здесь лучше передавать константую ссылку
     bool checker(const string& text)
-*/ 
+*/
 
 bool checker(string text) {
     for (auto& c : text) {
@@ -126,7 +126,7 @@ bool checker(string text) {
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    string s; // s = password
+    string s;  // s = password
 
     cout << "Пароль: ";
     cin >> s;
