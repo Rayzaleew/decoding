@@ -5,6 +5,7 @@ string code_atbash(string text) {
 	
 
 	for (auto& c : text) {
+        // надо определиться как ставить скобки и придерживаться стиля на весь проект
 		if (islower(c))
 		{
 			c = 26 - (c - 'a' + 1) + 'a';

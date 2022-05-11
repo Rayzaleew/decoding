@@ -30,6 +30,8 @@ string decrypt(string text, string key)
 }
 
 
+/*Способ взаимодействия со всеми шифрами лучше унифицировать
+и вынести в отдельную функцию*/
 
 void Vizh(string line, string key) {
 	int choice = 0;
