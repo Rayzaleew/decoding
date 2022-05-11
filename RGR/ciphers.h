@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -11,7 +12,8 @@
 using namespace std;
 
 string line_get(int cipher, string &key);
-bool checker(string text);
+bool checker(const string &text);
 void Atbash(string line);
 void Vizh(string line, string key);
 void Tar(string line);
+

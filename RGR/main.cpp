@@ -3,14 +3,14 @@
 void Prog() {
 	int cipher = 1;
 	string line, key;
-	int files = _mkdir("files");
 	while (cipher) {
 
-		cout << "Выберите шифр: " << endl;
-		cout << "Нажмите <1> для выбора шифра Атбаш " << endl;
-		cout << "Нажмите <2> для выбора шифра Виженера " << endl;
-		cout << "Нажмите <3> для выбора шифра “Тарабарская грамота” " << endl;
-		cout << "Нажмите <0> для выхода из программы " << endl;
+		cout << "Выберите шифр: " << endl
+			 << "Нажмите <1> для выбора шифра Атбаш " << endl
+			 << "Нажмите <2> для выбора шифра Виженера " << endl
+			 << "Нажмите <3> для выбора шифра “Тарабарская грамота” " << endl
+			 << "Нажмите <0> для выхода из программы " << endl;
+
 		cin >> cipher;
 		switch (cipher) {
 		case 1:
@@ -40,7 +40,7 @@ void Prog() {
 
 
 
-string line_get(int cipher, string &key) {
+string line_get(int cipher, string& key) {
 	int method = 0;
 	int a = 0;
 	string line, path;
@@ -69,29 +69,19 @@ string line_get(int cipher, string &key) {
 		cout << "Введите путь к файлу: " << endl;
 		cin >> path;
 		in.open(path);
-		if (cipher == 2) {
-			while(true) {
-				while (!in.eof()) {
-					if (a == 1) {
-						getline(in, key);
-						break;
-					}
-					getline(in, line);
-					a++;
+		while (true) {
+			while (!in.eof()) {
+				if (a == 1) {
+					getline(in, key);
+					break;
 				}
-				if (checker(line) || checker(key)) break;
-				
-			}
-			
-		}
-		else {
-			while (true) {
 				getline(in, line);
-				if (checker(line)) break;
+				a++;
 			}
+			if ((checker(line)) && (checker(key))) break;
 		}
 		in.close();
-		break;
+
 	default:
 		cout << "Выберите один из двух вариантов!" << endl;
 		break;
@@ -99,7 +89,8 @@ string line_get(int cipher, string &key) {
 	return line;
 }
 
-bool checker(string text) {
+
+bool checker(const string& text) {
 	for (auto& c : text) {
 		if (c < 32 || c > 126) {
 			cout << "Вы ввели недопустимые символы. Пожалуйста, повторите ввод" << endl;

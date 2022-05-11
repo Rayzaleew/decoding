@@ -1,6 +1,6 @@
 #include "ciphers.h"
 
-// С„СѓРЅРєС†РёСЏ РєРѕРґРёСЂРѕРІР°РЅРёСЏ/РґРµРєРѕРґРёСЂРѕРІР°РЅРёСЏ
+// функция кодирования/декодирования
 string code_atbash(string text) {
 	
 
@@ -24,15 +24,15 @@ void Atbash(string line) {
 	string path;
 	ofstream out;
 
-	cout << "РСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚: " << line << endl;
+	cout << "Исходный текст: " << line << endl;
 	string code = code_atbash(line);
-	cout << "Р—Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№/СЂР°СЃС€РёС„СЂРѕРІР°РЅРЅС‹Р№ С‚РµРєСЃС‚: " << code << endl;
+	cout << "Зашифрованный/расшифрованный текст: " << code << endl;
 
-	cout << "РҐРѕС‚РёС‚Рµ СЃРѕС…СЂР°РЅРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ РІ С„Р°Р№Р»Рµ? (1 - Р”Р°, 2 - РќРµС‚)" << endl;
+	cout << "Хотите сохранить результат в файле? (1 - Да, 2 - Нет)" << endl;
 	cin >> choice;
 	switch (choice) {
 	case 1:
-		cout << "Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ: " << endl;
+		cout << "Введите путь к файлу: " << endl;
 		cin >> path;
 		out.open(path);
 		out << code;
@@ -42,7 +42,7 @@ void Atbash(string line) {
 		cout << endl;
 		break;
 	default:
-		cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· РґРІСѓС… РІР°СЂРёР°РЅС‚РѕРІ! " << endl;
+		cout << "Выберите один из двух вариантов! " << endl;
 
 	}
 	
