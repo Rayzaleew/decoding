@@ -2,7 +2,7 @@
 
 // функция кодирования/декодирования
 string code_atbash(string text) {
-	
+
 
 	for (auto& c : text) {
 		if (islower(c))
@@ -45,5 +45,5 @@ void Atbash(string line) {
 		cout << "Выберите один из двух вариантов! " << endl;
 
 	}
-	
+
 }

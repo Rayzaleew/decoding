@@ -37,32 +37,32 @@ void Vizh(string line, string key) {
 	string path, code;
 	ofstream out;
 
-	cout << "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ‚ÐµÐºÑÑ‚: " << line << endl;
+	cout << "Èñõîäíûé òåêñò: " << line << endl;
 	
-	cout << "Ð’Ñ‹ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð·Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¸Ð»Ð¸ Ñ€Ð°ÑÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ñ‚ÐµÐºÑÑ‚? " << endl;
-	cout << "1. Ð—Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ " << endl;
-	cout << "2. Ð Ð°ÑÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ " << endl;
+	cout << "Âû õîòèòå çàøèôðîâàòü èëè ðàñøèôðîâàòü òåêñò? " << endl;
+	cout << "1. Çàøèôðîâàòü " << endl;
+	cout << "2. Ðàñøèôðîâàòü " << endl;
 	cin >> action;
 	switch (action) {
 	case 1:
 		code = encrypt(line, key);
-		cout << "Ð—Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ñ‚ÐµÐºÑÑ‚: " << code << endl;
+		cout << "Çàøèôðîâàííûé òåêñò: " << code << endl;
 		break;
 	case 2:
 		code = decrypt(line, key);
-		cout << "Ð Ð°ÑÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ñ‚ÐµÐºÑÑ‚: " << code << endl;
+		cout << "Ðàñøèôðîâàííûé òåêñò: " << code << endl;
 		break;
 	default:
-		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¾Ð´Ð¸Ð½ Ð¸Ð· Ð´Ð²ÑƒÑ… Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð¾Ð²! " << endl;
+		cout << "Âûáåðèòå îäèí èç äâóõ âàðèàíòîâ! " << endl;
 	}
 	
 	
 
-	cout << "Ð¥Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð² Ñ„Ð°Ð¹Ð»Ðµ? (1 - Ð”Ð°, 2 - ÐÐµÑ‚)" << endl;
+	cout << "Õîòèòå ñîõðàíèòü ðåçóëüòàò â ôàéëå? (1 - Äà, 2 - Íåò)" << endl;
 	cin >> choice;
 	switch (choice) {
 	case 1:
-		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿ÑƒÑ‚ÑŒ Ðº Ñ„Ð°Ð¹Ð»Ñƒ: " << endl;
+		cout << "Ââåäèòå ïóòü ê ôàéëó: " << endl;
 		cin >> path;
 		out.open(path);
 		out << code;
@@ -72,7 +72,7 @@ void Vizh(string line, string key) {
 		cout << endl;
 		break;
 	default:
-		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¾Ð´Ð¸Ð½ Ð¸Ð· Ð´Ð²ÑƒÑ… Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð¾Ð²! " << endl;
+		cout << "Âûáåðèòå îäèí èç äâóõ âàðèàíòîâ! " << endl;
 
 	}
 }
